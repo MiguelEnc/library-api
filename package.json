@@ -1,0 +1,23 @@
+{
+  "name": "library-api",
+  "version": "1.0.0",
+  "description": "Library api for GBH's recluitment process",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/gbh-candidates/miguel-amauris-encarnacion-sanchez---miguelenc---2020-9-22-library-api---js.git"
+  },
+  "keywords": [
+    "restApi",
+    "nodejs"
+  ],
+  "author": "Miguel Encarnacion",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/gbh-candidates/miguel-amauris-encarnacion-sanchez---miguelenc---2020-9-22-library-api---js/issues"
+  },
+  "homepage": "https://gitlab.com/gbh-candidates/miguel-amauris-encarnacion-sanchez---miguelenc---2020-9-22-library-api---js#readme"
+}

@@ -4,6 +4,10 @@
   "description": "Library api for GBH's recluitment process",
   "main": "index.js",
   "scripts": {
+    "prestart": "npm run seed",
+    "start": "node ./infrastructure/http/server.js",
+    "dev": "nodemon ./infrastructure/http/server.js",
+    "seed": "node ./infrastructure/db/seeder.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,5 +23,12 @@
   "bugs": {
     "url": "https://gitlab.com/gbh-candidates/miguel-amauris-encarnacion-sanchez---miguelenc---2020-9-22-library-api---js/issues"
   },
-  "homepage": "https://gitlab.com/gbh-candidates/miguel-amauris-encarnacion-sanchez---miguelenc---2020-9-22-library-api---js#readme"
+  "homepage": "https://gitlab.com/gbh-candidates/miguel-amauris-encarnacion-sanchez---miguelenc---2020-9-22-library-api---js#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "mongo-seeding": "^3.4.1",
+    "mongodb": "^3.6.2"
+  }
 }

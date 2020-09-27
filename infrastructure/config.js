@@ -7,8 +7,14 @@ const DB_NAME = process.env.DB_NAME || "Library";
 
 const MONGO_URI = `mongodb+srv://${DB_USER}:${DB_PASS}@librarycluster.zul9l.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`;
 
+const config = {
+  host: APP_HOST,
+  port: APP_PORT,
+  dbURI: MONGO_URI,
+};
+
 module.exports = {
-  APP_HOST,
-  APP_PORT,
-  MONGO_URI,
+  get: (key) => {
+    return config[key];
+  },
 };

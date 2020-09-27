@@ -3,7 +3,7 @@ const { Seeder } = require("mongo-seeding");
 const config = require("../config");
 
 const seederConfig = {
-  database: config.MONGO_URI,
+  database: config.get("dbURI"),
   dropDatabase: true,
 };
 const seeder = new Seeder(seederConfig);

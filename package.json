@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "prestart": "npm run seed",
-    "start": "node ./infrastructure/http/server.js",
-    "dev": "nodemon ./infrastructure/http/server.js",
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "seed": "node ./infrastructure/db/seeder.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

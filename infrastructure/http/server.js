@@ -1,22 +1,28 @@
 const http = require("http");
 const config = require("../config.js");
 const router = require("./bookRoutes");
-const utils = require("./utils");
-const db = require("../db/db");
+const errorsHandler = require("./errorsHandler");
 
-const HOST = config.APP_HOST;
-const PORT = config.APP_PORT;
-
-db.connect();
-
-const server = http.createServer((request, response) => {
-  if (request.method !== "GET") {
-    utils.respondError(response, 405);
-  } else {
-    response.end("ok");
+module.exports = class Server {
+  constructor() {
+    this.host = config.get("host");
+    this.port = config.get("port");
   }
-});
 
-server.listen(PORT, HOST, () => {
-  console.log(`Server started on ${HOST}:${PORT}`);
-});
+  start() {
+    const server = http.createServer((request, response) => {
+      response.writeHead(200, {
+        "Content-Type": "application/json;charset=utf-8",
+      });
+      if (request.method !== "GET") {
+        errorsHandler.handleError(405, response);
+      } else {
+        router.handleGetRequests(request, response);
+      }
+    });
+
+    server.listen(this.port, this.host, () => {
+      console.log(`Server started on ${this.host}:${this.port}`);
+    });
+  }
+};

@@ -37,7 +37,7 @@ module.exports = class LocalBookRepository {
           author: 1,
           publisher: 1,
           description: 1,
-          pages: 1,
+          pagesCount: 1,
           formats: {
             $map: {
               input: {

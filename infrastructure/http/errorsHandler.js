@@ -22,7 +22,6 @@ const handleError = (code, response) => {
   const message = createMessage(code);
   console.error(message);
   response.end(message);
-  return message;
 };
 
 module.exports = errorsHandler = {

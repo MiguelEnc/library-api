@@ -1,32 +1,77 @@
-# Biblioteca 
+# API Biblioteca
 
-Soluciones GBH acaba de contratarlo a ústed para crear su biblioteca en línea. La misma le instruyó construir un REST API el cuál permita sus clientes consumir el listado de libros disponibles, así como también, leer dichos libros página por página en el formato deseado. 
+Para iniciar el proyecto, ejecutar `npm start`. Esto iniciará automaticamente el proceso de seeding de la base de datos.
 
-Para esta primera iteración los libros estarán disponibles (página por página) en texto plano y HTML. En próximas iteraciones se agregará soporte para más formatos de lectura, y además, se agregará soporte para interconectarse con otros servicios proveedores de libros en línea. 
+Para ejecutar el seeding de manera manual, ejecutar `npm run seed`.
 
-## Requerimientos Técnicos 
+## Sobre el api
 
-- Ver listado de libros
-- Visualizar un libro
-- Visualizar por página de un libro en el formato deseado.
-- Hacer uso de friendly routes (ej; /book/1 ó /book/1 /page/11/html).
-- Proveer seeders/migrations para la base de datos (libros con sus páginas).
-- Proveer una explicación de cómo configurar su proyecto. 
+El API sólo soporta la operación GET para el endpoint `/books`.
 
-## Reglas
+Las rutas suportadas son:
 
-- No haga uso de ningún framework, un buen desarrollador debe saber seleccionar sus herramientas y ponerlas a funcionar en conjunto.
-- El uso de librerías de terceros es permitido y alentado.
-- Haga uso de .gitignore, evite al máximo incluir archivos innecesarios. 
+```
+books/
+```
 
-## Criterios de Evaluación 
+Muestra el listado de libros.
 
-1. Requerimientos técnicos.
-2. Organización y consistencia de la estructura de archivos y folders.
-3. Modificabilidad y extensibilidad del sistema en los puntos requeridos. 
-4. Commit history (commits son organizados y descriptivos).
-5. Tiempo utilizado para completar la prueba.
-6. Complejidad de la solución.
-7. SOLID principles.
-8. Uso correcto de patrones de diseño. 
+Los elementos retornados son:
 
+- isbn
+- title
+
+---
+
+```
+books/:isbn
+```
+
+A partir de un código isbn, se puede consultar información mas extensa de un libro.
+
+Los elementos retornados son:
+
+- title
+- isbn
+- edition
+- author
+- publisher
+- description
+- pagesCount
+- formats
+
+El campo formats contiene un arreglo con los formatos disponibles del libro.
+
+---
+
+```
+books/:isbn/page/:number?format=format
+```
+
+Retorna el contenido de la págna solicitada en el formato requerido.
+
+El campo formato debe enviarse como un query.
+
+---
+
+Request de prueba:
+
+```
+books/9781491924464/page/4?format=html
+```
+
+---
+
+## Sobre el código
+
+Valores de configuración, tales como Host, Puerto, Nombre de la Base de Datos, y el Usuario y Contraseña, se pueden configurar por medio de variables de entorno, o directamente en el archivo `config.js`
+
+El path de los nuevos repositorios deben ser registrados en el array `REPOSITORIES` del archivo `config.js` para que puedan ser agregados al Controller automáticamente.
+
+Los repositorios no aceptan argumentos por constructor, deben inicializar su conexión.
+
+## Sobre del proceso de Seeding
+
+Los folders agregados al folder `data-import` se usan para crear Collections en la base de datos. El Collection tomará el nombre del folder.
+
+Cada folder debe exportar un objeto o un arreglo de objetos. Estos serán introducidos al Collection como Documents.

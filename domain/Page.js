@@ -1,5 +1,6 @@
 class Page {
-  constructor(content) {
+  constructor(isbn = "", content = "") {
+    this.isbn = isbn;
     this.content = content;
   }
 }

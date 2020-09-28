@@ -1,13 +1,12 @@
 class Book {
   constructor(
-    title,
-    isbn,
-    author,
-    publisher,
-    description,
-    pagesCount,
-    formats,
-    pages
+    title = "",
+    isbn = "",
+    author = "",
+    publisher = "",
+    description = "",
+    pagesCount = 0,
+    formats = []
   ) {
     this.title = title;
     this.isbn = isbn;
@@ -16,7 +15,6 @@ class Book {
     this.description = description;
     this.pagesCount = pagesCount;
     this.formats = formats;
-    this.pages = pages;
   }
 }
 
